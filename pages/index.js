@@ -30,6 +30,10 @@ export default function Home({ launches }) {
                 href={launch.links.video_link}
                 className={styles.card}
               >
+                {launch.ships.map((i) => (
+                  <img key={i.id} src={i.image} style={{ width: "200px" }} />
+                ))}
+
                 <h3>{launch.mission_name}</h3>
                 <p>
                   <strong>Launch Date:</strong>{" "}
@@ -69,6 +73,9 @@ export async function getStaticProps() {
           }
           rocket {
             rocket_name
+          }
+          ships {
+            image
           }
         }
       }
